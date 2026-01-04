@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comité de Jóvenes 2026</title>
+    <title>Grupo de Evangelismo 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --azul-cielo: #4da3ff;
-            --azul-oscuro: #2f8cff;
-            --negro: #111;
+            --dorado: #FFD700;
+            --dorado-oscuro: #B8860B;
+            --rojo-evangelio: #B22222;
             --blanco: #ffffff;
+            --negro: #111;
             --gris: #f2f2f2;
-            --azul-claro: #eaf3ff;
-            --verde: #4CAF50;
-            --rojo: #f44336;
-            --naranja: #ff9800;
-            --morado: #9c27b0;
-            --amarillo: #ffeb3b;
-            --verde-finanzas: #2E7D32; /* Color adicional para contabilidad */
+            --azul-cielo: #87CEEB;
+            --verde-esperanza: #228B22;
+            --morado-espiritual: #8A2BE2;
+            --beige: #F5F5DC;
         }
 
         * {
@@ -30,7 +28,7 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #0c1a2d, #1a3a5f, #2c5282);
+            background: linear-gradient(135deg, #1a0f0f, #2c1818, #3a1f1f);
             overflow-x: hidden;
             position: relative;
         }
@@ -56,7 +54,7 @@
         .shape-1 {
             width: 500px;
             height: 500px;
-            background: var(--azul-cielo);
+            background: var(--dorado);
             top: -200px;
             right: -100px;
             animation: float 25s infinite ease-in-out;
@@ -65,7 +63,7 @@
         .shape-2 {
             width: 400px;
             height: 400px;
-            background: var(--naranja);
+            background: var(--rojo-evangelio);
             bottom: -150px;
             left: -100px;
             animation: float 30s infinite ease-in-out reverse;
@@ -74,7 +72,7 @@
         .shape-3 {
             width: 300px;
             height: 300px;
-            background: var(--morado);
+            background: var(--verde-esperanza);
             top: 50%;
             left: 10%;
             animation: float 20s infinite ease-in-out;
@@ -83,7 +81,7 @@
         .shape-4 {
             width: 250px;
             height: 250px;
-            background: var(--verde);
+            background: var(--morado-espiritual);
             bottom: 20%;
             right: 15%;
             animation: float 35s infinite ease-in-out;
@@ -92,7 +90,7 @@
         /* Líneas decorativas */
         .decorative-line {
             position: fixed;
-            background: rgba(77, 163, 255, 0.15);
+            background: rgba(255, 215, 0, 0.15);
             z-index: -1;
         }
 
@@ -128,7 +126,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-image: radial-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
             z-index: -1;
             opacity: 0.3;
@@ -148,18 +146,18 @@
 
         /* Contenido principal */
         .main-content {
-            max-width: 1200px;
+            max-width: 1000px;
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
             padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(15px);
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--dorado);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -172,7 +170,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--azul-cielo), transparent);
+            background: linear-gradient(90deg, transparent, var(--dorado), transparent);
             animation: borderGlow 3s infinite;
         }
 
@@ -199,12 +197,12 @@
         .logo {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, var(--azul-cielo), var(--azul-oscuro));
+            background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 15px 35px rgba(77, 163, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
             animation: pulse 2s infinite;
         }
 
@@ -215,7 +213,7 @@
 
         .logo i {
             font-size: 3rem;
-            color: white;
+            color: var(--negro);
         }
 
         .header-text {
@@ -225,39 +223,41 @@
         }
 
         h1 {
-            color: white;
+            color: var(--dorado);
             font-size: 3.5rem;
             margin: 0;
             line-height: 1.1;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
         h1 span {
-            color: var(--azul-cielo);
-            background: linear-gradient(135deg, var(--azul-cielo), #a8d5ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--blanco);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .subtitle {
-            color: var(--azul-cielo);
+            color: var(--blanco);
             font-weight: 600;
             font-size: 1.5rem;
             margin-top: 5px;
             letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--rojo-evangelio), #8B0000);
+            padding: 8px 20px;
+            border-radius: 30px;
+            display: inline-block;
         }
 
         .verse {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.2rem;
             line-height: 1.6;
             margin-top: 10px;
             font-style: italic;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(178, 34, 34, 0.2);
             border-radius: 15px;
-            border-left: 4px solid var(--azul-cielo);
+            border-left: 4px solid var(--dorado);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
         /* Estadísticas */
@@ -268,32 +268,33 @@
         }
 
         .stat-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 215, 0, 0.1);
             padding: 20px;
             border-radius: 20px;
             min-width: 120px;
             text-align: center;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             transition: transform 0.3s ease;
         }
 
         .stat-item:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--azul-cielo);
+            color: var(--dorado);
             margin-bottom: 5px;
-            text-shadow: 0 3px 10px rgba(77, 163, 255, 0.5);
+            text-shadow: 0 3px 10px rgba(255, 215, 0, 0.5);
         }
 
         .stat-label {
             font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--blanco);
             font-weight: 500;
         }
 
@@ -301,13 +302,16 @@
         .right-column {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
         }
 
         .buttons {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
+            width: 100%;
         }
 
         .btn {
@@ -319,11 +323,14 @@
             transition: all 0.4s ease;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 20px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             z-index: 1;
+            text-align: center;
+            border: 2px solid transparent;
         }
 
         .btn::before {
@@ -343,43 +350,25 @@
         }
 
         .btn-calendario {
-            background: linear-gradient(135deg, var(--azul-cielo), var(--azul-oscuro));
-            color: var(--blanco);
+            background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+            color: var(--negro);
+            border-color: var(--dorado-oscuro);
         }
 
         .btn-calendario:hover {
             transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(77, 163, 255, 0.5);
-        }
-
-        .btn-contabilidad {
-            background: linear-gradient(135deg, var(--negro), #333);
-            color: var(--blanco);
-        }
-
-        .btn-contabilidad:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.5);
         }
 
         .btn-contabilidad-finanzas {
-            background: linear-gradient(135deg, var(--verde-finanzas), #4CAF50);
+            background: linear-gradient(135deg, var(--rojo-evangelio), #8B0000);
             color: var(--blanco);
+            border-color: #8B0000;
         }
 
         .btn-contabilidad-finanzas:hover {
             transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(46, 125, 50, 0.5);
-        }
-
-        .btn-cumpleanos {
-            background: linear-gradient(135deg, var(--naranja), #e65100);
-            color: var(--blanco);
-        }
-
-        .btn-cumpleanos:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(255, 152, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(178, 34, 34, 0.5);
         }
 
         .btn i {
@@ -402,7 +391,7 @@
         .floating-1 {
             width: 80px;
             height: 80px;
-            background: var(--naranja);
+            background: var(--dorado);
             top: 10%;
             right: 15%;
             animation: floatElement 15s infinite ease-in-out;
@@ -411,7 +400,7 @@
         .floating-2 {
             width: 60px;
             height: 60px;
-            background: var(--verde);
+            background: var(--rojo-evangelio);
             bottom: 20%;
             left: 5%;
             animation: floatElement 20s infinite ease-in-out reverse;
@@ -420,7 +409,7 @@
         .floating-3 {
             width: 40px;
             height: 40px;
-            background: var(--morado);
+            background: var(--verde-esperanza);
             top: 40%;
             right: 5%;
             animation: floatElement 25s infinite ease-in-out;
@@ -431,17 +420,43 @@
             50% { transform: translateY(-30px) rotate(180deg); }
         }
 
+        /* Lema del grupo */
+        .group-motto {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid var(--dorado);
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .group-motto h3 {
+            color: var(--dorado);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .group-motto p {
+            color: var(--blanco);
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
         /* Footer */
         footer {
             margin-top: 50px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 1rem;
             font-weight: 500;
             padding: 20px;
             width: 100%;
-            max-width: 1200px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1000px;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
         }
 
         /* Animaciones de entrada */
@@ -467,8 +482,7 @@
         .stats { animation-delay: 1s; }
         .buttons .btn:nth-child(1) { animation-delay: 1.2s; }
         .buttons .btn:nth-child(2) { animation-delay: 1.4s; }
-        .buttons .btn:nth-child(3) { animation-delay: 1.6s; }
-        .buttons .btn:nth-child(4) { animation-delay: 1.8s; } /* Nuevo botón */
+        .group-motto { animation-delay: 1.6s; }
         footer { animation-delay: 2s; }
 
         /* Responsive */
@@ -490,6 +504,10 @@
             
             .logo i {
                 font-size: 2.5rem;
+            }
+            
+            .right-column {
+                order: -1;
             }
         }
 
@@ -524,6 +542,10 @@
             .stat-item {
                 min-width: 100px;
             }
+            
+            .group-motto {
+                padding: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -556,6 +578,10 @@
             .btn i {
                 font-size: 1.5rem;
             }
+            
+            .stats {
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -585,40 +611,7 @@
         
         <!-- Contenido principal -->
         <div class="main-content">
-            <!-- Columna izquierda -->
-            <div class="left-column">
-                <div class="logo-container">
-                    <div class="logo">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="header-text">
-                        <h1>Comité de <span>Jóvenes 2026</span></h1>
-                        <div class="subtitle">Dios Siempre Tiene el Control</div>
-                    </div>
-                </div>
-                
-                <div class="verse">
-                    "Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes, porque Jehová tu Dios estará contigo dondequiera que vayas."<br>
-                    <strong style="color: var(--azul-cielo); margin-top: 10px; display: block;">Josué 1:9</strong>
-                </div>
-                
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number">7</div>
-                        <div class="stat-label">Miembros Activos</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">12</div>
-                        <div class="stat-label">Eventos Anuales</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Apoyo en Fe</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Columna derecha -->
+            <!-- Columna derecha - Botones -->
             <div class="right-column">
                 <div class="buttons">
                     <a href="calendario.html" class="btn btn-calendario">
@@ -626,33 +619,54 @@
                         <span>Calendario de Actividades</span>
                     </a>
 
-                    <a href="contabilidad.html" class="btn btn-contabilidad">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Campamento</span>
-                    </a>
-
                     <a href="Contabilidadyfina.html" class="btn btn-contabilidad-finanzas">
                         <i class="fas fa-calculator"></i>
                         <span>Contabilidad y Finanzas</span>
                     </a>
-
-                    <a href="cumpleaños.html" class="btn btn-cumpleanos">
-                        <i class="fas fa-gift"></i>
-                        <span>Cumpleaños de Jóvenes</span>
-                    </a>
                 </div>
                 
-                <div class="additional-info">
-                    <p style="color: rgba(255, 255, 255, 0.7); text-align: center; font-size: 1.1rem; margin-top: 20px;">
-                        <i class="fas fa-hands-praying" style="color: var(--azul-cielo); margin-right: 10px;"></i>
-                        Unidos en fe, creciendo en comunidad, sirviendo con amor.
-                    </p>
+                <div class="group-motto">
+                    <h3><i class="fas fa-cross"></i> Nuestra Misión</h3>
+                    <p>"Llevar el mensaje de salvación a toda criatura, siendo luz en las tinieblas y sembrando semillas de fe para la gloria de Dios."</p>
+                </div>
+            </div>
+            
+            <!-- Columna izquierda -->
+            <div class="left-column">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-cross"></i>
+                    </div>
+                    <div class="header-text">
+                        <h1>Grupo de <span>Evangelismo 2026</span></h1>
+                        <div class="subtitle">Predicando el Evangelio de Cristo</div>
+                    </div>
+                </div>
+                
+                <div class="verse">
+                    "Y les dijo: Id por todo el mundo y predicad el evangelio a toda criatura. El que creyere y fuere bautizado, será salvo; mas el que no creyere, será condenado."<br>
+                    <strong style="color: var(--dorado); margin-top: 10px; display: block;">Marcos 16:15-16</strong>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Evangelistas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24+</div>
+                        <div class="stat-label">Campañas Anuales</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Almas para Cristo</div>
+                    </div>
                 </div>
             </div>
         </div>
         
         <footer>
-            © 2026 Comité de Jóvenes | Confiando siempre en Dios |
+            © 2026 Grupo de Evangelismo | "Porque no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree" - Romanos 1:16
         </footer>
     </div>
 
@@ -673,7 +687,7 @@
                 particle.style.height = `${size}px`;
                 
                 // Color aleatorio
-                const colors = ['#4da3ff', '#ff9800', '#9c27b0', '#4CAF50', '#2E7D32'];
+                const colors = ['#FFD700', '#B22222', '#228B22', '#8A2BE2', '#87CEEB'];
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 particle.style.background = color;
                 
