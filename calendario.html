@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comité de Jóvenes - Plan de Actividades Anual</title>
+    <title>Comité de Evangelismo - Plan de Actividades Anual</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     <style>
         :root {
-            --primary-color: #4A6FA5;
-            --secondary-color: #6B9AC4;
-            --accent-color: #97D8C4;
+            --primary-color: #5D4037;
+            --secondary-color: #8D6E63;
+            --accent-color: #D84315;
             --light-color: #F4F7F5;
             --dark-color: #2C3E50;
             --danger-color: #E74C3C;
@@ -21,9 +24,9 @@
         }
 
         .dark-theme {
-            --primary-color: #5D8CC8;
-            --secondary-color: #7FB3D5;
-            --accent-color: #A3E4D7;
+            --primary-color: #795548;
+            --secondary-color: #A1887F;
+            --accent-color: #FF5722;
             --light-color: #2C3E50;
             --dark-color: #ECF0F1;
             --danger-color: #E74C3C;
@@ -213,7 +216,7 @@
         }
 
         .view-btn:hover:not(.active) {
-            background-color: rgba(74, 111, 165, 0.1);
+            background-color: rgba(93, 64, 55, 0.1);
         }
 
         .date-navigation {
@@ -255,7 +258,7 @@
             gap: 15px;
             margin-bottom: 25px;
             padding: 20px;
-            background-color: rgba(107, 154, 196, 0.1);
+            background-color: rgba(141, 110, 99, 0.1);
             border-radius: var(--border-radius);
         }
 
@@ -334,7 +337,7 @@
         }
 
         .calendar-day:hover {
-            background-color: rgba(74, 111, 165, 0.05);
+            background-color: rgba(93, 64, 55, 0.05);
         }
 
         .day-number {
@@ -349,7 +352,7 @@
         }
 
         .today {
-            background-color: rgba(151, 216, 196, 0.2);
+            background-color: rgba(216, 67, 21, 0.2);
             border: 2px solid var(--accent-color);
         }
 
@@ -408,7 +411,7 @@
             align-items: center;
             padding: 15px;
             border-radius: var(--border-radius);
-            background-color: rgba(107, 154, 196, 0.1);
+            background-color: rgba(141, 110, 99, 0.1);
             border-left: 5px solid var(--primary-color);
             transition: var(--transition);
         }
@@ -528,7 +531,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+            box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.2);
         }
 
         .form-row {
@@ -597,7 +600,7 @@
 
         .activity-type.selected {
             border-color: var(--primary-color);
-            background-color: rgba(74, 111, 165, 0.1);
+            background-color: rgba(93, 64, 55, 0.1);
         }
 
         .type-color {
@@ -660,6 +663,26 @@
         .stat-label {
             font-size: 16px;
             color: var(--dark-color);
+        }
+
+        /* Estado de carga */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+
+        .loading i {
+            margin-right: 10px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Responsive */
@@ -739,11 +762,11 @@
         <header>
             <div class="logo-container">
                 <div class="logo">
-                    CJ
+                    <i class="fas fa-cross"></i>
                 </div>
                 <div class="comite-name">
-                    <h1>Comité de Jóvenes</h1>
-                    <p>Plan de Actividades Anual</p>
+                    <h1>Comité de Evangelismo</h1>
+                    <p>Plan de Actividades de Evangelización</p>
                 </div>
             </div>
             <div class="header-controls">
@@ -792,12 +815,12 @@
             </div>
             <select class="filter-select" id="typeFilter">
                 <option value="">Todos los tipos</option>
-                <option value="reunion">Reunión</option>
-                <option value="evento">Evento</option>
-                <option value="servicio">Servicio</option>
+                <option value="oracion">Reunión de Oración</option>
+                <option value="evangelismo">Campaña Evangelística</option>
+                <option value="estudio">Estudio Bíblico</option>
+                <option value="concierto">Concierto de Alabanza</option>
+                <option value="servicio">Servicio Comunitario</option>
                 <option value="capacitacion">Capacitación</option>
-                <option value="social">Social</option>
-                <option value="deportivo">Deportivo</option>
             </select>
             <select class="filter-select" id="responsibleFilter">
                 <option value="">Todos los responsables</option>
@@ -810,7 +833,7 @@
         <!-- Estadísticas -->
         <div class="stats-container">
             <div class="stat-card">
-                <div class="stat-icon" style="background-color: rgba(74, 111, 165, 0.1); color: var(--primary-color);">
+                <div class="stat-icon" style="background-color: rgba(93, 64, 55, 0.1); color: var(--primary-color);">
                     <i class="fas fa-calendar-check"></i>
                 </div>
                 <div class="stat-count" id="totalActivities">0</div>
@@ -824,18 +847,18 @@
                 <div class="stat-label">Próximas Actividades</div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon" style="background-color: rgba(243, 156, 18, 0.1); color: var(--warning-color);">
-                    <i class="fas fa-exclamation-circle"></i>
+                <div class="stat-icon" style="background-color: rgba(216, 67, 21, 0.1); color: var(--accent-color);">
+                    <i class="fas fa-cross"></i>
                 </div>
-                <div class="stat-count" id="highPriority">0</div>
-                <div class="stat-label">Alta Prioridad</div>
+                <div class="stat-count" id="evangelismActivities">0</div>
+                <div class="stat-label">Evangelísticas</div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon" style="background-color: rgba(107, 154, 196, 0.1); color: var(--secondary-color);">
+                <div class="stat-icon" style="background-color: rgba(141, 110, 99, 0.1); color: var(--secondary-color);">
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="stat-count" id="totalResponsibles">0</div>
-                <div class="stat-label">Responsables</div>
+                <div class="stat-label">Colaboradores</div>
             </div>
         </div>
 
@@ -888,7 +911,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="activityLocation">Lugar</label>
-                                <input type="text" id="activityLocation" class="form-control" placeholder="Ej: Sala de reuniones">
+                                <input type="text" id="activityLocation" class="form-control" placeholder="Ej: Iglesia Central">
                             </div>
                         </div>
                         <div class="form-row">
@@ -916,6 +939,10 @@
                             <label for="activityDescription">Descripción</label>
                             <textarea id="activityDescription" class="form-control" rows="4" placeholder="Descripción detallada de la actividad..."></textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="activityContact">Contacto / Teléfono</label>
+                            <input type="text" id="activityContact" class="form-control" placeholder="Teléfono o email de contacto">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -928,31 +955,99 @@
     </div>
 
     <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBpFPK-c2XiQ-iNa5f_imqIJuD3lc4GelE",
+            authDomain: "base--evan-calenda.firebaseapp.com",
+            databaseURL: "https://base--evan-calenda-default-rtdb.firebaseio.com",
+            projectId: "base--evan-calenda",
+            storageBucket: "base--evan-calenda.firebasestorage.app",
+            messagingSenderId: "782377242952",
+            appId: "1:782377242952:web:c8feb533580d131f1ce37d",
+            measurementId: "G-5NB7TC3NCT"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        
         // Variables globales
         let currentDate = new Date();
         let currentView = 'monthly';
-        let activities = JSON.parse(localStorage.getItem('comiteJovenesActivities')) || [];
+        let activities = [];
         let editActivityId = null;
         let filteredActivities = [];
 
-        // Tipos de actividades con colores
+        // Tipos de actividades para evangelismo
         const activityTypes = [
-            { id: 'reunion', name: 'Reunión', color: '#4A6FA5', icon: 'fas fa-users' },
-            { id: 'evento', name: 'Evento', color: '#6B9AC4', icon: 'fas fa-calendar' },
-            { id: 'servicio', name: 'Servicio', color: '#97D8C4', icon: 'fas fa-hands-helping' },
-            { id: 'capacitacion', name: 'Capacitación', color: '#F4B942', icon: 'fas fa-chalkboard-teacher' },
-            { id: 'social', name: 'Social', color: '#E55934', icon: 'fas fa-glass-cheers' },
-            { id: 'deportivo', name: 'Deportivo', color: '#9BC53D', icon: 'fas fa-running' }
+            { id: 'oracion', name: 'Reunión de Oración', color: '#5D4037', icon: 'fas fa-pray' },
+            { id: 'evangelismo', name: 'Campaña Evangelística', color: '#D84315', icon: 'fas fa-cross' },
+            { id: 'estudio', name: 'Estudio Bíblico', color: '#2E7D32', icon: 'fas fa-bible' },
+            { id: 'concierto', name: 'Concierto de Alabanza', color: '#6A1B9A', icon: 'fas fa-music' },
+            { id: 'servicio', name: 'Servicio Comunitario', color: '#0277BD', icon: 'fas fa-hands-helping' },
+            { id: 'capacitacion', name: 'Capacitación', color: '#F9A825', icon: 'fas fa-chalkboard-teacher' }
         ];
 
         // Inicializar la aplicación
         document.addEventListener('DOMContentLoaded', function() {
             initApp();
-            renderCalendar();
-            renderActivityList();
-            updateStats();
-            populateFilters();
+            loadActivitiesFromFirebase();
         });
+
+        // Cargar actividades desde Firebase
+        function loadActivitiesFromFirebase() {
+            const activitiesRef = database.ref('evangelismo_activities');
+            
+            // Mostrar estado de carga
+            const calendarGrid = document.getElementById('calendarGrid');
+            calendarGrid.innerHTML = '<div class="loading"><i class="fas fa-spinner"></i> Cargando actividades...</div>';
+            
+            activitiesRef.on('value', (snapshot) => {
+                activities = [];
+                const data = snapshot.val();
+                
+                if (data) {
+                    Object.keys(data).forEach(key => {
+                        activities.push({
+                            id: key,
+                            ...data[key]
+                        });
+                    });
+                }
+                
+                // Actualizar vistas
+                renderCalendar();
+                renderActivityList();
+                updateStats();
+                populateFilters();
+                
+                // Mostrar mensaje si no hay actividades
+                if (activities.length === 0) {
+                    calendarGrid.innerHTML = '<div class="loading">No hay actividades programadas. ¡Crea la primera!</div>';
+                }
+            });
+        }
+
+        // Guardar actividad en Firebase
+        function saveActivityToFirebase(activity) {
+            const activitiesRef = database.ref('evangelismo_activities');
+            
+            if (editActivityId) {
+                // Actualizar actividad existente
+                return activitiesRef.child(editActivityId).update(activity);
+            } else {
+                // Crear nueva actividad
+                const newActivityRef = activitiesRef.push();
+                activity.id = newActivityRef.key;
+                return newActivityRef.set(activity);
+            }
+        }
+
+        // Eliminar actividad de Firebase
+        function deleteActivityFromFirebase(activityId) {
+            const activityRef = database.ref('evangelismo_activities/' + activityId);
+            return activityRef.remove();
+        }
 
         // Inicializar eventos
         function initApp() {
@@ -1147,7 +1242,9 @@
             });
             
             // Seleccionar el primer tipo por defecto
-            document.querySelector('.activity-type').classList.add('selected');
+            if (document.querySelector('.activity-type')) {
+                document.querySelector('.activity-type').classList.add('selected');
+            }
         }
 
         // Abrir modal de actividad
@@ -1158,7 +1255,9 @@
             
             // Restablecer formulario
             document.getElementById('activityForm').reset();
-            document.querySelector('.activity-type').classList.add('selected');
+            if (document.querySelector('.activity-type')) {
+                document.querySelector('.activity-type').classList.add('selected');
+            }
             document.querySelector('.priority-badge.priority-medium').classList.add('selected');
             document.getElementById('activityPriority').value = 'medium';
             
@@ -1178,6 +1277,7 @@
                     document.getElementById('activityLocation').value = activity.location || '';
                     document.getElementById('activityResponsible').value = activity.responsible;
                     document.getElementById('activityDescription').value = activity.description || '';
+                    document.getElementById('activityContact').value = activity.contact || '';
                     document.getElementById('activityPriority').value = activity.priority;
                     
                     // Seleccionar tipo de actividad
@@ -1227,7 +1327,14 @@
             const title = document.getElementById('activityTitle').value.trim();
             const date = document.getElementById('activityDate').value;
             const responsible = document.getElementById('activityResponsible').value.trim();
-            const selectedType = document.querySelector('.activity-type.selected').getAttribute('data-type');
+            const selectedTypeElement = document.querySelector('.activity-type.selected');
+            
+            if (!selectedTypeElement) {
+                alert('Por favor seleccione un tipo de actividad');
+                return;
+            }
+            
+            const selectedType = selectedTypeElement.getAttribute('data-type');
             
             if (!title || !date || !responsible) {
                 alert('Por favor complete los campos obligatorios (*)');
@@ -1239,77 +1346,59 @@
             const location = document.getElementById('activityLocation').value.trim();
             const description = document.getElementById('activityDescription').value.trim();
             const priority = document.getElementById('activityPriority').value;
+            const contact = document.getElementById('activityContact').value.trim();
             
             // Obtener tipo de actividad seleccionado
             const typeObj = activityTypes.find(t => t.id === selectedType);
             
+            // Crear objeto actividad
+            const activityData = {
+                title,
+                date,
+                time,
+                location,
+                responsible,
+                description,
+                contact,
+                type: selectedType,
+                typeName: typeObj.name,
+                color: typeObj.color,
+                priority,
+                lastUpdated: new Date().toISOString()
+            };
+            
+            // Si estamos editando, mantener el id
             if (editActivityId) {
-                // Actualizar actividad existente
-                const index = activities.findIndex(a => a.id === editActivityId);
-                if (index !== -1) {
-                    activities[index] = {
-                        ...activities[index],
-                        title,
-                        date,
-                        time,
-                        location,
-                        responsible,
-                        description,
-                        type: selectedType,
-                        typeName: typeObj.name,
-                        color: typeObj.color,
-                        priority
-                    };
-                }
-            } else {
-                // Crear nueva actividad
-                const newActivity = {
-                    id: generateId(),
-                    title,
-                    date,
-                    time,
-                    location,
-                    responsible,
-                    description,
-                    type: selectedType,
-                    typeName: typeObj.name,
-                    color: typeObj.color,
-                    priority,
-                    createdAt: new Date().toISOString()
-                };
-                
-                activities.push(newActivity);
+                activityData.id = editActivityId;
             }
             
-            // Guardar en LocalStorage
-            saveToLocalStorage();
-            
-            // Actualizar vistas
-            renderCalendar();
-            renderActivityList();
-            updateStats();
-            populateFilters();
-            applyFilters();
-            
-            // Cerrar modal
-            closeActivityModal();
-            
-            // Mostrar mensaje de confirmación
-            alert(editActivityId ? 'Actividad actualizada correctamente' : 'Actividad creada correctamente');
+            // Guardar en Firebase
+            saveActivityToFirebase(activityData)
+                .then(() => {
+                    // Cerrar modal
+                    closeActivityModal();
+                    
+                    // Mostrar mensaje de confirmación
+                    alert(editActivityId ? 'Actividad actualizada correctamente' : 'Actividad creada correctamente');
+                })
+                .catch((error) => {
+                    console.error('Error al guardar:', error);
+                    alert('Error al guardar la actividad. Por favor intente nuevamente.');
+                });
         }
 
         // Eliminar actividad
         function deleteActivity() {
             if (editActivityId && confirm('¿Está seguro de eliminar esta actividad?')) {
-                activities = activities.filter(a => a.id !== editActivityId);
-                saveToLocalStorage();
-                renderCalendar();
-                renderActivityList();
-                updateStats();
-                populateFilters();
-                applyFilters();
-                closeActivityModal();
-                alert('Actividad eliminada correctamente');
+                deleteActivityFromFirebase(editActivityId)
+                    .then(() => {
+                        closeActivityModal();
+                        alert('Actividad eliminada correctamente');
+                    })
+                    .catch((error) => {
+                        console.error('Error al eliminar:', error);
+                        alert('Error al eliminar la actividad. Por favor intente nuevamente.');
+                    });
             }
         }
 
@@ -1325,7 +1414,7 @@
                 return;
             }
             
-            // Ordenar actividades por fecha (más recientes primero)
+            // Ordenar actividades por fecha (más cercanas primero)
             const sortedActivities = [...activitiesToShow].sort((a, b) => new Date(a.date) - new Date(b.date));
             
             sortedActivities.forEach(activity => {
@@ -1343,8 +1432,9 @@
                     <div class="list-item-info">
                         <h4>${activity.title}</h4>
                         <p><i class="far fa-calendar"></i> ${formattedDate} ${activity.time ? `- ${activity.time}` : ''}</p>
-                        <p><i class="fas fa-map-marker-alt"></i> ${activity.location || 'Sin lugar definido'}</p>
+                        <p><i class="fas fa-map-marker-alt"></i> ${activity.location || 'Por definir'}</p>
                         <p><i class="fas fa-user"></i> ${activity.responsible} | <i class="fas fa-tag"></i> ${activity.typeName} | <span class="priority-${activity.priority}">Prioridad ${activity.priority}</span></p>
+                        ${activity.contact ? `<p><i class="fas fa-phone"></i> ${activity.contact}</p>` : ''}
                     </div>
                     <div class="list-item-actions">
                         <button class="btn btn-secondary edit-activity" data-id="${activity.id}">
@@ -1371,14 +1461,14 @@
                 btn.addEventListener('click', function() {
                     const activityId = this.getAttribute('data-id');
                     if (confirm('¿Está seguro de eliminar esta actividad?')) {
-                        activities = activities.filter(a => a.id !== activityId);
-                        saveToLocalStorage();
-                        renderCalendar();
-                        renderActivityList();
-                        updateStats();
-                        populateFilters();
-                        applyFilters();
-                        alert('Actividad eliminada correctamente');
+                        deleteActivityFromFirebase(activityId)
+                            .then(() => {
+                                alert('Actividad eliminada correctamente');
+                            })
+                            .catch((error) => {
+                                console.error('Error al eliminar:', error);
+                                alert('Error al eliminar la actividad. Por favor intente nuevamente.');
+                            });
                     }
                 });
             });
@@ -1390,29 +1480,19 @@
             return activities.filter(activity => activity.date === dateString);
         }
 
-        // Generar ID único
-        function generateId() {
-            return Date.now().toString(36) + Math.random().toString(36).substr(2);
-        }
-
-        // Guardar en LocalStorage
-        function saveToLocalStorage() {
-            localStorage.setItem('comiteJovenesActivities', JSON.stringify(activities));
-        }
-
         // Actualizar estadísticas
         function updateStats() {
             const total = activities.length;
             const today = new Date();
             const upcoming = activities.filter(a => new Date(a.date) >= today).length;
-            const highPriority = activities.filter(a => a.priority === 'high').length;
+            const evangelismActivities = activities.filter(a => a.type === 'evangelismo').length;
             
             // Obtener responsables únicos
             const responsibles = [...new Set(activities.map(a => a.responsible))];
             
             document.getElementById('totalActivities').textContent = total;
             document.getElementById('upcomingActivities').textContent = upcoming;
-            document.getElementById('highPriority').textContent = highPriority;
+            document.getElementById('evangelismActivities').textContent = evangelismActivities;
             document.getElementById('totalResponsibles').textContent = responsibles.length;
         }
 
@@ -1470,9 +1550,10 @@
             
             filteredActivities = activities.filter(activity => {
                 // Filtrar por búsqueda
-                if (searchTerm && !activity.title.toLowerCase().includes(searchTerm) && 
-                    !activity.description.toLowerCase().includes(searchTerm) &&
-                    !activity.location.toLowerCase().includes(searchTerm)) {
+                if (searchTerm && 
+                    !activity.title.toLowerCase().includes(searchTerm) && 
+                    !(activity.description && activity.description.toLowerCase().includes(searchTerm)) &&
+                    !(activity.location && activity.location.toLowerCase().includes(searchTerm))) {
                     return false;
                 }
                 
